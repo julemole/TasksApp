@@ -1,0 +1,23 @@
+.sidenav {
+  width: 40%;
+  background-color: #090d20;
+
+  ul {
+    padding: 0;
+    margin: 1rem 0 0 0;
+  }
+
+  li {
+    list-style: none;
+    font-size: 1.25rem;
+    padding: .5rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #13172e;
+    }
+  }
+}

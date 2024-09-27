@@ -1,0 +1,24 @@
+.bg-header {
+  width: 100%;
+  height: 5rem;
+  background-color: #090d20;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.bg-header button {
+  font-size: 2rem;
+  margin-right: 1rem;
+  background-color: transparent;
+  border-radius: 50%;
+  padding: 0 .5rem;
+
+  &:hover {
+    background-color: #13172e;
+  }
+
+  i {
+    background-color: transparent;
+  }
+}
