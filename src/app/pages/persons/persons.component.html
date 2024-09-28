@@ -1,1 +1,61 @@
-<p>persons works!</p>
+<section>
+  <div class="d-flex justify-content-between mb-2">
+    <h1>Persons</h1>
+    <button class="btn btn-primary" (click)="openModal()">Add Person</button>
+  </div>
+  <app-table [contentType]="'person'" [headers]="headers" [data]="personsList()" (item)="receiveData($event)"/>
+</section>
+
+<app-modal [title]="'Persons'">
+  <form [formGroup]="personForm" >
+    <div class="mb-3">
+      <label for="name" class="form-label">Full Name</label>
+      <input type="text" class="form-control" id="name" name="name" placeholder="type full name" formControlName="full_name">
+      <span *ngIf="personForm.get('full_name')?.touched && personForm.get('full_name')?.hasError('required')" class="text-danger">Campo obligatorio</span>
+    </div>
+    <div class="mb-3">
+      <label for="age" class="form-label">Age</label>
+      <input type="number" class="form-control" id="age" name="age" placeholder="type age" formControlName="age">
+      <span *ngIf="personForm.get('age')?.touched && personForm.get('age')?.hasError('required')" class="text-danger">Campo obligatorio</span>
+      <span *ngIf="personForm.get('age')?.touched && !personForm.get('age')?.hasError('required') && personForm.get('age')?.hasError('min')" class="text-danger">La edad debe ser igual o superior a 18</span>
+    </div>
+    <div class="keyword-chips position-relative">
+      <div class="d-flex gap-2 align-items-center">
+        <label for="skills">
+          Skills
+        </label>
+      </div>
+
+      <div class="chip-input-container position-relative">
+        <div *ngFor="let skill of selectedSkills" class="chip">
+          {{ skill.name }}
+          <span (click)="removeSkill(skill)">x</span>
+        </div>
+        <span class="text-muted ps-2 item position-absolute end-0 pe-3"><i class="fa fa-search"></i></span>
+        <input type="text" class="form-control"
+          placeholder="select"
+          formArrayName="skills"
+          id="skills"
+          (input)="onSearchChange($event)"
+          (focus)="onInputFocus()"
+          (blur)="onInputBlur()"
+          autocomplete="off"
+        >
+      </div>
+
+      <div *ngIf="showSkills" class="suggestions-list">
+        <div *ngFor="let skill of avalaibleSkills" class="suggestion-item" (mousedown)="onSkillSelect(skill)">
+          <span class="item">{{ skill.name }}</span>
+        </div>
+      </div>
+
+      <div *ngIf="!selectedSkills.length && personForm.touched" class="text-danger">
+        Debe seleccionar al menos una habilidad.
+      </div>
+    </div>
+    <div class="d-flex justify-content-end gap-2 my-2">
+      <button type="button" class="btn btn-primary" (click)="addOrEditperson()">Save</button>
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="closeModal()">Close</button>
+    </div>
+  </form>
+</app-modal>

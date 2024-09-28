@@ -1,1 +1,21 @@
-<p>skills works!</p>
+<section>
+  <div class="d-flex justify-content-between mb-2">
+    <h1>Skills</h1>
+    <button class="btn btn-primary" (click)="openModal()">Add Skill</button>
+  </div>
+  <app-table [contentType]="'skill'" [headers]="['name']" [data]="skillsList()" (item)="receiveData($event)"/>
+</section>
+
+<app-modal [title]="'Skills'">
+  <form>
+    <div>
+      <label for="name" class="form-label">Name</label>
+      <input type="text" class="form-control" id="name" name="name" placeholder="type skill name" [formControl]="name">
+    </div>
+    <span *ngIf="name.touched && name.hasError('required')" class="text-danger">Campo obligatorio</span>
+    <div class="d-flex justify-content-end gap-2 my-2">
+      <button type="button" class="btn btn-primary" (click)="addOrEditSkill()">Save</button>
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="closeModal()">Close</button>
+    </div>
+  </form>
+</app-modal>

@@ -1,0 +1,73 @@
+.keyword-chips{
+  .chip-input-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    border: 1px solid #ccc;
+    padding: 0 .2rem 0 .2rem;;
+    border-radius: .5rem;
+  }
+
+  .chip {
+    display: flex;
+    align-items: center;
+    padding: 4px 8px;
+    margin: 2px;
+    margin-right: 5px;
+    color: #FFF;
+    background-color: #007bff;
+    border: 1px solid #007bff;
+    border-radius: 16px;
+    font-size: 1rem;
+  }
+
+  .chip span {
+    cursor: pointer;
+    margin-left: 5px;
+  }
+
+  .form-control {
+    flex-grow: 1;
+    border: none;
+    outline: none;
+    padding: 5px;
+    font-size: 16px;
+    background-color: transparent;
+  }
+
+  .form-control:empty:not(:focus) {
+    width: 0;
+    margin: 0;
+  }
+
+  .suggestions-list {
+    background: #222;
+    max-height: 10rem;
+    overflow-y: auto;
+    position: absolute;
+    left: 1%;
+    right: 1%;
+    border: 1px solid #333;
+    border-radius: 1rem;
+    z-index: 2000;
+  }
+
+  .suggestion-item {
+    padding: .4rem;
+    border-bottom: 1px solid #333;
+    cursor: pointer;
+  }
+
+  .suggestion-item:last-child {
+    border-bottom: none;
+  }
+
+  .suggestion-item:hover {
+    background-color: #333;
+    color: #FFF;
+  }
+
+  .item{
+    font-size: .75rem;
+  }
+}

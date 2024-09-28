@@ -9,3 +9,19 @@
   box-sizing: border-box;
   color: #FFF;
 }
+
+.form-control, .form-select {
+  background-color: #333;
+  color: #FFF;
+  &:focus{
+    background-color: #333;
+    color: #FFF;
+  }
+
+  &::placeholder {
+    color: #c4b2b2;
+  }
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
